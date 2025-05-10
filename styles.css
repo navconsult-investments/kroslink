@@ -138,15 +138,16 @@ body {
   align-items: center;
   gap: 0.75rem;
   font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-style: italic;
-  color: #003366;
+  color: #042240;
 }
 
 .signature-line {
   width: 4px;
   height: 40px;
-  background-color: red;
+  /* background-color: red; */
+  background: #022b54;
 }
 
 @media (max-width: 768px) {

@@ -45,6 +45,8 @@ body {
   justify-content: center;
   text-align: center;
   padding: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, #004080, #0072c6);
 }
 
 h4 {
@@ -53,7 +55,7 @@ h4 {
 }
 
 p {
-  color: gray;
+  color: #fff;
   margin-top: 10px;
 }
 
@@ -110,7 +112,7 @@ button.hidden {
 }
 
 #userInfo {
-  color: green;
+  color: white;
   font-weight: bold;
   margin-top: 10px;
 }

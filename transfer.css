@@ -65,8 +65,10 @@
 }
 
 .mode-btn.active {
-  border-color: red;
-  background: #ffeaea;
+  /* border-color: red; */
+  border-color: #003087;
+  /* background: #ffeaea; */
+  background: #e6f4ff;
 }
 
 #scrollRight {
@@ -125,7 +127,9 @@
   margin-top: 1.5rem;
   padding: 0.6rem;
   width: 100%;
-  background: #d00000;
+  /* background: #d00000; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
   color: #fff;
   border: none;
   border-radius: 6px;

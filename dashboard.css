@@ -329,7 +329,8 @@ hr {
   .slide-text {
     font-size: 0.8rem;
     margin-left: 1.4rem;
-    color: rgb(224, 20, 20);
+    /* color: rgb(224, 20, 20); */
+    color: #003087;
   }
 
   .slider-container {
@@ -449,7 +450,8 @@ hr {
 }
 /* bottom-nav */
 .bottom-nav li.active {
-  color: rgb(224, 20, 20);
+  /* color: rgb(224, 20, 20); */
+  color: #003087;
   background: transparent;
 }
 
@@ -584,7 +586,8 @@ hr {
 .icon-item i {
   font-size: 24px;
   margin-bottom: 5px;
-  color: rgb(224, 20, 20);
+  /* color: rgb(224, 20, 20); */
+  color: #003087;
 }
 
 /* Ensure icons remain 4 per row even on smaller screens */
