@@ -1,0 +1,174 @@
+body {
+  background: url("https://onlineac.zenithbank.com/img/rightcross.svg")
+    no-repeat center center/cover;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="date"] {
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+.left-panel {
+  width: 50%;
+  background: url("https://onlineac.zenithbank.com/img/bvncross.svg") no-repeat
+    center center/cover;
+  color: white;
+}
+
+.overlay {
+  /* background: red; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  color: white;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.right-panel {
+  width: 50%;
+  padding: 40px;
+}
+
+.verification-form {
+  max-width: 400px;
+  margin: auto;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: gray;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: lightgray;
+  cursor: not-allowed;
+}
+
+button:not(:disabled) {
+  /* background: red; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+}
+
+@media screen and (max-width: 767px) {
+  .left-panel {
+    display: none;
+  }
+
+  .right-panel {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.go-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.loading-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#loadingOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(imgs/blue-bg-img.jpg) center center no-repeat;
+  background-size: cover;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.loading-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  animation: pulseZoom 2s ease-in-out infinite;
+}
+
+.loader-circle {
+  width: 120px;
+  height: 120px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #003087;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseZoom {
+  0%,
+  100% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

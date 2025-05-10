@@ -1,0 +1,166 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Header */
+.contact-header {
+  background: linear-gradient(to right, #003087, #0070ba);
+  color: white;
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+}
+
+.contact-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-header p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Container */
+.contact-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Sections */
+.contact-section {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contact-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.section-content h2 {
+  margin-top: 0;
+  color: #003087;
+}
+
+.section-content p,
+.section-content ul {
+  margin: 0.5rem 0 1rem;
+}
+
+.section-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section-content ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.section-content ul li i {
+  margin-right: 0.5rem;
+  color: #0070ba;
+}
+
+.section-image {
+  flex: 1;
+  padding: 1rem;
+}
+
+.section-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Contact Form */
+.contact-form-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form-section h2 {
+  text-align: center;
+  color: #003087;
+  margin-bottom: 1.5rem;
+}
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.submit-button {
+  background-color: #0070ba;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto 0;
+  transition: background-color 0.3s ease;
+}
+
+.location-content {
+  flex: 1 1 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.location-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.location-content p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

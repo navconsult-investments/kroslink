@@ -1,0 +1,137 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Header */
+.loans-header {
+  background: linear-gradient(to right, #003087, #0070ba);
+  color: white;
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+}
+
+.loans-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.loans-header p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Container */
+.loans-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Loan Sections */
+.loan-section {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.loan-icon {
+  flex: 0 0 80px;
+  font-size: 2.5rem;
+  color: #0070ba;
+  margin-right: 1.5rem;
+}
+
+.loan-content {
+  flex: 1;
+}
+
+.loan-content h2 {
+  margin-top: 0;
+  color: #003087;
+}
+
+.loan-content p {
+  margin: 0.5rem 0 1rem;
+}
+
+.loan-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Footer */
+.loans-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #003087;
+  color: white;
+  margin-top: 3rem;
+}
+
+/* Accordion Styles */
+.accordion {
+  margin: 2rem auto;
+  max-width: 1100px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item {
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  text-align: left;
+  border: none;
+  background-color: #f1f4f9;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+  background-color: #e2e6ef;
+}
+
+.accordion-content {
+  padding: 1rem;
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loan-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .loan-icon {
+    margin-bottom: 1rem;
+  }
+}

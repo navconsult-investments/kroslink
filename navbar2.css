@@ -1,0 +1,216 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  color: #003087;
+  font-weight: 600;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.bank-name {
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #003087, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .bank-name {
+    font-size: 0.7rem;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-links li a {
+  color: #003087;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links li:hover > a {
+  background-color: rgba(0, 48, 135, 0.1);
+  border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 43px;
+  left: 0;
+  background-color: white;
+  list-style: none;
+  min-width: 200px;
+  border-radius: 5px;
+  color: #003087;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, visibility 0.4s;
+}
+
+.dropdown-menu li a {
+  color: #003087;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: rgba(0, 48, 135, 0.1);
+}
+
+/* Desktop Hover */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    visibility: visible;
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+/* Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-btn {
+  background-color: white;
+  color: #003087;
+  padding: 5px 15px;
+  border: 2px solid #003087;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  display: none; /* Hide on desktop */
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #003087;
+}
+
+/* Arrow */
+.arrow-icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate Arrow when open */
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-links,
+  .nav-actions {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .nav-links li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .nav-links li a {
+    color: #003087;
+    justify-content: center;
+  }
+
+  .nav-actions {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar.open .nav-links,
+  .navbar.open .nav-actions {
+    display: flex;
+  }
+
+  /* Dropdown collapse/expand */
+  .dropdown-menu {
+    position: static;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+
+  .dropdown-menu.open-dropdown {
+    visibility: visible;
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 350px) {
+  .bank-name {
+    font-size: 0.6rem;
+  }
+}

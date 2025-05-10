@@ -1,0 +1,622 @@
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  background: url("https://onlineac.zenithbank.com/img/rightcross.svg")
+    no-repeat;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: white;
+  color: gray;
+  position: fixed;
+  transition: width 0.3s ease;
+  border: 1px solid gainsboro;
+  overflow-y: auto; /* Enable scrolling */
+  display: flex;
+  flex-direction: column; /* Ensure proper structure */
+  z-index: 1000;
+  background: url("https://onlineac.zenithbank.com/img/bvncross.svg") no-repeat;
+  -webkit-overflow-scrolling: touch; /* Ensures smooth scrolling on mobile */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  /* background: rgb(224, 20, 20); */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  padding: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: white;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  display: none;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar-menu li:hover {
+  /* background: rgb(224, 20, 20); */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  color: white;
+}
+
+.sidebar-menu i {
+  margin-right: 10px;
+}
+
+/* Updated sidebar footer to stay at the bottom */
+.sidebar-footer {
+  position: relative; /* Change from absolute */
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin-top: auto; /* Push footer to bottom dynamically */
+  padding: 15px 0;
+  background: white;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: grey;
+  margin: 10px 0;
+}
+
+/* Collapsed sidebar styles */
+.collapsed {
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.collapsed .menu-text,
+.collapsed .user-details {
+  display: none;
+}
+
+.collapsed .sidebar-menu li {
+  padding: 10px 5px; /* Reduced padding for collapsed state */
+}
+
+.collapsed .sidebar-menu i {
+  font-size: 20px; /* Icons should be the same size when collapsed */
+  margin-right: 0; /* Remove spacing next to icons */
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  width: auto;
+}
+
+.section {
+  display: none;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: -2.5rem;
+}
+
+.section.active {
+  display: block;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  /* background: rgb(224, 20, 20); */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  color: white;
+}
+#mobile-menu-icon {
+  display: none;
+}
+.content-header {
+  height: 70px; /* Match height of sidebar header */
+  /* Red background for the header */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.section-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-text {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  /* background: white; */
+}
+/* Responsive behavior: Hide sidebar and expand content on smaller screens */
+@media (max-width: 768px) {
+  .user-details {
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 0;
+  }
+  .logo {
+    display: none;
+  }
+  .sidebar-menu {
+    height: auto;
+  }
+
+  .content {
+    margin-left: -5rem;
+    width: 100vw;
+  }
+  .section-nav,
+  .header-logo {
+    margin-top: -1.8rem;
+  }
+  #mobile-menu-icon {
+    margin-top: 1rem;
+  }
+}
+/* Mobile menu icon: Visible only on small screens */
+.mobile-menu-icon {
+  /* position: fixed; */
+  top: 15px;
+  left: 15px;
+  height: 72px;
+  font-size: 24px;
+  color: whitesmoke;
+  /* background: rgb(224, 20, 20); */
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2000;
+  display: none; /* Hide by default */
+}
+
+/* Show menu icon on small screens */
+@media (max-width: 768px) {
+  .mobile-menu-icon {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    width: auto;
+    left: -250px; /* Hide initially */
+    transition: left 0.3s ease-in-out;
+    background: white;
+  }
+
+  .sidebar.open {
+    display: flex;
+    left: 0;
+  }
+  #mobile-menu-icon {
+    display: block;
+  }
+  #menu-icon {
+    display: none;
+  }
+  .sidebar-menu li {
+    font-size: 0.8rem;
+  }
+}
+
+/* overview head */
+
+/* Style for the Slider */
+.slider-container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto; /* Let it adjust to the height of the content */
+  justify-content: center;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.slide {
+  display: none;
+  flex: 0 0 100%;
+  justify-content: center;
+  align-items: start;
+  text-align: start;
+  transition: opacity 1s ease-in-out;
+}
+
+.active-slide {
+  display: block;
+}
+
+.slide-text {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  margin-left: 1.5rem;
+}
+
+/* Navigation Dots */
+.dots-container {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  top: 5px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slide-text {
+    font-size: 0.8rem;
+  }
+
+  .slider-container {
+    height: auto; /* Adjust height on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-text {
+    font-size: 0.8rem;
+    margin-left: 1.4rem;
+    color: rgb(224, 20, 20);
+  }
+
+  .slider-container {
+    margin-top: 1.5rem;
+  }
+  .dot {
+    font-size: 0.8rem;
+  }
+}
+/* Horizontal line styling */
+.section-divider1 {
+  width: 100%;
+  border: 1px #ccc;
+  margin: 5px 30px; /* Add margin on the left and right for spacing */
+}
+
+/* Full Name styling */
+.full-name {
+  font-size: 1rem;
+  text-align: start;
+  margin: 10px 2rem;
+}
+
+/* Balance styling */
+.balance {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: start;
+  margin: 0 2rem;
+
+  color: #333;
+}
+
+/* Ledger and History container */
+.ledger-history {
+  display: flex;
+  justify-content: space-between;
+  background-color: #837c7c;
+  padding: 0 20px;
+  /* border-radius: 8px; */
+  margin-top: 10px;
+  width: 100%;
+  align-items: center; /* Ensure vertical alignment */
+}
+
+/* Ledger account text */
+.ledger-account {
+  font-size: 0.8rem;
+  color: white;
+}
+
+/* History text with Font Awesome icon */
+.history {
+  font-size: 0.8rem;
+  color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+.history i {
+  margin-right: 5px; /* Space between the icon and text */
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  line-height: 0;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .full-name {
+    font-size: 0.8rem;
+  }
+
+  .balance {
+    font-size: 1rem;
+  }
+
+  .ledger-account,
+  .history {
+    font-size: 0.8rem;
+  }
+
+  .history {
+    margin-top: 10px;
+  }
+  .user-info {
+    line-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-name {
+    font-size: 0.8rem;
+    margin-left: 2rem;
+  }
+
+  .balance {
+    font-size: 1rem;
+    margin-left: 2rem;
+  }
+
+  .ledger-account,
+  .history {
+    font-size: 0.6rem;
+  }
+  .user-info {
+    line-height: 0;
+  }
+}
+@media (max-width: 312px) {
+  .ledger-account,
+  .history {
+    font-size: 0.5rem;
+  }
+}
+/* bottom-nav */
+.bottom-nav li.active {
+  color: rgb(224, 20, 20);
+  background: transparent;
+}
+
+.bottom-nav li:hover {
+  color: black;
+  background: none;
+}
+
+.bottom-nav {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+/* Responsive: 500px and below */
+@media screen and (max-width: 500px) {
+  .bottom-nav {
+    display: flex;
+    gap: 0;
+    padding: 0.5rem 0;
+  }
+
+  .nav-item {
+    font-size: 12px;
+  }
+
+  .icon {
+    font-size: 18px;
+  }
+}
+
+/* Super small screens: 350px and below */
+@media screen and (max-width: 350px) {
+  .nav-item {
+    font-size: 10px;
+  }
+
+  .icon {
+    font-size: 16px;
+  }
+}
+
+/* Hide on larger screens */
+@media screen and (min-width: 501px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* Ledger history */
+.balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6rem;
+}
+
+.history {
+  cursor: pointer;
+}
+
+/* EaZyLinks Section */
+.eazy-links {
+  margin-top: 20px;
+  margin-left: 1.4rem;
+  text-align: start;
+  overflow-x: hidden;
+  margin-top: 0 auto;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.section-divider {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+  overflow-x: hidden;
+}
+
+/* Icons Row - Ensures 4 icons per row on all screen sizes */
+.icon-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  margin-left: 5rem;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+}
+
+.icon-item i {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: rgb(224, 20, 20);
+}
+
+/* Ensure icons remain 4 per row even on smaller screens */
+@media (max-width: 600px) {
+  .icon-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .icon-item {
+    font-size: 12px;
+  }
+
+  .icon-item i {
+    font-size: 20px;
+  }
+}
+
+/* Banner */
+.full-width-banner {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0 2rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 360px) {
+  .icon-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}

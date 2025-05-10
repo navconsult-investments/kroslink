@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
+    <title>Dashboard | KrosLinkFinanceOnlineBanking</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="transfer.css" />
+    <link rel="stylesheet" href="airtimesection.css" />
+    <link rel="stylesheet" href="billsection.css" />
+    <link rel="stylesheet" href="travel.css" />
+    <link rel="stylesheet" href="message.css" />
+    <link rel="stylesheet" href="settings.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+      #transaction-history {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-top: 1rem;
+        background-color: #f9f9f9;
+      }
+
+      .collapsed {
+        display: none !important;
+      }
+
+      .transaction-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .transaction-item {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+      }
+
+      .transaction-item:hover {
+        transform: translateY(-3px);
+      }
+
+      .transaction-top {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+
+      .transaction-details {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .status {
+        padding: 0.2rem 0.6rem;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .status.pending {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+
+      .status.success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 600px) {
+        .transaction-top,
+        .transaction-details {
+          flex-direction: column;
+          font-size: 0.85rem;
+        }
+
+        .transaction-top span {
+          display: block;
+          margin-bottom: 0.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <i
+      id="mobile-menu-icon"
+      class="fas fa-bars mobile-menu-icon"
+      onclick="toggleSidebar()"
+    ></i>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="user-info">
+          <i
+            id="menu-icon"
+            class="fas fa-bars toggle-btn"
+            onclick="toggleSidebar()"
+          ></i>
+          <div class="user-details">
+            <p id="midandlastname">Loading......</p>
+            <span class="username" id="username">Loading.....</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li onclick="activateMenu(this, 'overview')" class="active">
+          <i class="fas fa-home"></i> <span class="menu-text">Overview</span>
+        </li>
+        <li onclick="activateMenu(this, 'transfer')">
+          <i class="fas fa-exchange-alt"></i>
+          <span class="menu-text">Transfer</span>
+        </li>
+        <li onclick="activateMenu(this, 'transactions')">
+          <i class="fas fa-receipt"></i>
+          <span class="menu-text">Transaction History</span>
+        </li>
+
+        <li onclick="activateMenu(this, 'airtime')">
+          <i class="fas fa-mobile-alt"></i>
+          <span class="menu-text">Airtime Recharge</span>
+        </li>
+        <li onclick="activateMenu(this, 'bill')">
+          <i class="fas fa-file-invoice"></i>
+          <span class="menu-text">Bill Payment</span>
+        </li>
+
+        <li onclick="activateMenu(this, 'travel')">
+          <i class="fas fa-plane"></i>
+          <span class="menu-text">Travels & Leisure</span>
+        </li>
+        <li onclick="activateMenu(this, 'messages')">
+          <i class="fas fa-envelope"></i>
+          <span class="menu-text">Messages</span>
+        </li>
+        <li onclick="activateMenu(this, 'settings')">
+          <i class="fas fa-cog"></i> <span class="menu-text">Settings</span>
+        </li>
+
+        <hr />
+        <li style="color: red">
+          <i class="fa fa-power-off"></i>
+          <a href="login.html" style="color: red; text-decoration: none">
+            <span class="menu-text">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <section id="overview" class="section active">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Overview</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <!-- Slider Container -->
+          <div class="slider-container">
+            <div class="slide active-slide">
+              <span class="slide-text"
+                >Savings Account - <span id="accountNum">Loading...</span></span
+              >
+            </div>
+            <div class="slide">
+              <span class="slide-text">Cards: coming soon...</span>
+            </div>
+            <div class="slide">
+              <span class="slide-text">customize-links: coming soon..</span>
+            </div>
+            <div class="dots-container">
+              <div class="dot active-dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+
+          <hr class="section-divider1" />
+
+          <!-- Full Name and Balance -->
+          <div class="user-info">
+            <p class="full-name" id="full-name">Loading ....</p>
+            <p class="balance">
+              <strong id="balance-amount">$0.00</strong>
+              <i class="fa fa-eye" id="toggle-balance"></i>
+            </p>
+          </div>
+
+          <!-- Ledger Account & History -->
+          <div class="ledger-history">
+            <p class="ledger-account" id="ledger-account">
+              Ledger account: $0.00
+            </p>
+            <p class="history" onclick="activateMenu(this, 'transactions')">
+              <i class="fa fa-calendar"></i> History
+            </p>
+          </div>
+
+          <!-- EaZyLinks Section -->
+          <div class="eazy-links">
+            <span class="section-title">eaZyLinks</span>
+            <hr class="section-divider" />
+
+            <div class="icon-row">
+              <div class="icon-item">
+                <i class="fa fa-plane"></i>
+                <p>Travel & Leisure</p>
+              </div>
+              <div class="icon-item">
+                <i class="fa fa-tv"></i>
+                <p>Cable TV</p>
+              </div>
+              <div class="icon-item">
+                <i class="fa fa-credit-card"></i>
+                <p>Cards</p>
+              </div>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="icon-row">
+              <div class="icon-item">
+                <i class="fa fa-clock"></i>
+                <p>Scheduled Payment</p>
+              </div>
+              <div class="icon-item">
+                <i class="fa fa-cog"></i>
+                <p>Customize EaZyLinks</p>
+              </div>
+              <div class="icon-item">
+                <i class="fa fa-cogs"></i>
+                <p>Settings</p>
+              </div>
+            </div>
+
+            <hr class="section-divider" />
+
+            <!-- <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6dULpUYqTLtSuU-cpxXoHeh-SL3rQN0WTZw&s"
+              alt="Banner"
+              class="full-width-banner"
+            /> -->
+          </div>
+        </div>
+      </section>
+
+      <section id="transfer" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Transfer</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <div class="transfer-container">
+            <div class="transfer-mode">
+              <label>Select Transfer Mode</label>
+              <div class="transfer-options-wrapper">
+                <div class="transfer-options" id="transfer-options">
+                  <button class="mode-btn active" data-mode="own">
+                    👤 Own Account
+                  </button>
+                  <button class="mode-btn" data-mode="zenith">
+                    🏦 KrosLink Bank
+                  </button>
+                  <button class="mode-btn" data-mode="other">
+                    🏛️ Other Banks
+                  </button>
+                  <button class="mode-btn" data-mode="foreign">
+                    🌍 Foreign Transfer
+                  </button>
+                  <button class="mode-btn" data-mode="beneficiary">
+                    ➕ Open Account for Beneficiary
+                  </button>
+                </div>
+                <button id="scrollRight">➡️</button>
+              </div>
+            </div>
+
+            <!-- Form Sections -->
+            <form id="own" class="transfer-form active-form">
+              <label for="account-type-own">Select source account</label>
+              <select
+                name="account-type"
+                id="account-type-own"
+                class="account-type-dropdown"
+              >
+                <option disabled selected>Loading account...</option>
+              </select>
+
+              <label>Amount</label>
+              <input
+                type="text"
+                placeholder="$0.00"
+                required
+                id="amount-input"
+                name="amount"
+              />
+
+              <label>Account Number</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="accountNumber"
+                  placeholder="Account Number"
+                  maxlength="10"
+                  name="accountNumberInputed"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <img
+                  id="loadingGif"
+                  src="Loading_icon.gif"
+                  alt="Loading..."
+                  style="display: none; width: 20px"
+                />
+              </div>
+              <label>Account Name</label>
+              <input type="text" placeholder="Account Name" required />
+              <label>Bank Name</label>
+              <input type="text" placeholder="Account Name" required />
+
+              <label>Transaction Description</label>
+              <input type="text" placeholder="Description" />
+              <button type="submit">Transfer</button>
+            </form>
+
+            <form id="zenith" class="transfer-form hidden">
+              <label for="account-type-zenith">Select source account</label>
+              <select
+                name="account-type"
+                id="account-type-zenith"
+                class="account-type-dropdown"
+              >
+                <option disabled selected>Loading account...</option>
+              </select>
+
+              <label>Amount</label>
+              <input
+                type="text"
+                placeholder="$0.00"
+                required
+                id="amount-input"
+                name="amount"
+              />
+              <label>Account Number</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="accountNumberInputed"
+                  id="accountNumberZenith"
+                  placeholder="Account Number"
+                  maxlength="10"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <img
+                  id="loadingGifZenith"
+                  src="Loading_icon.gif"
+                  alt="Loading..."
+                  style="display: none; width: 20px"
+                />
+              </div>
+              <label>Account Name</label>
+              <input type="text" placeholder="Account Name" required />
+              <label>Bank Name</label>
+              <input type="text" placeholder="Account Name" required />
+              <label>Transaction Description</label>
+              <input type="text" placeholder="Description" />
+              <button type="submit">Transfer</button>
+            </form>
+
+            <form id="other" class="transfer-form hidden">
+              <label for="account-type-other">Select source account</label>
+              <select
+                name="account-type"
+                id="account-type-other"
+                class="account-type-dropdown"
+              >
+                <option disabled selected>Loading account...</option>
+              </select>
+              <label>Amount</label>
+              <input
+                type="text"
+                placeholder="$0.00"
+                required
+                id="amount-input"
+                name="amount"
+              />
+              <label>Beneficiary Account Number</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="otherAccount"
+                  placeholder="Account Number"
+                  maxlength="10"
+                  name="accountNumberInputed"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <img
+                  id="loadingGifOther"
+                  src="imgs/Loading_icon.gif"
+                  alt="Loading..."
+                  style="display: none; width: 20px"
+                />
+              </div>
+              <!-- <label>Select Bank</label>
+              <select name="bank" id="bank-dropdown">
+                <option value="1">First Bank</option>
+                <option value="2">Access Bank</option>
+                <option value="3">Guaranty Trust Bank</option>
+                <option value="4">UBA</option>
+                <option value="5">Stanbic IBTC</option>
+              </select> -->
+
+              <label>Account Name</label>
+              <input type="text" placeholder="Account Name" required />
+              <label>Bank Name</label>
+              <input type="text" placeholder="Account Name" required />
+              <label>Transaction Description</label>
+              <input type="text" placeholder="Description" />
+              <button type="submit">Transfer</button>
+            </form>
+
+            <form id="foreign" class="transfer-form hidden">
+              <label for="account-type-foreign ">Select source account</label>
+              <select
+                name="account-type"
+                id="account-type-foreign"
+                class="account-type-dropdown"
+              >
+                <option disabled selected>Loading account...</option>
+              </select>
+              <label>Amount (USD)</label>
+              <input
+                type="text"
+                placeholder="$0.00"
+                required
+                id="amount-input"
+                name="amount"
+              />
+              <label>SWIFT Code</label>
+              <input type="text" placeholder="e.g. DEUTDEFFXXX" required />
+              <label>Bank Name</label>
+              <input type="text" placeholder="Bank Name" required />
+              <label>Account Number</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="accountNumberForeign"
+                  placeholder="Account Number"
+                  maxlength="10"
+                  name="accountNumberInputed"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <img
+                  id="loadingGifForeign"
+                  src="imgs/Loading_icon.gif"
+                  alt="Loading..."
+                  style="display: none; width: 20px"
+                />
+              </div>
+              <label>Country</label>
+              <input type="text" placeholder="Country" required />
+              <label>Transaction Purpose</label>
+              <input type="text" placeholder="Payment reason" required />
+              <button type="submit">Transfer</button>
+            </form>
+
+            <form id="beneficiary" class="transfer-form hidden">
+              <label>Beneficiary Source Account Name</label>
+              <input type="text" placeholder="Source Account" required />
+              <label>Beneficiary Account Number</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="beneficiaryAccountNumber"
+                  placeholder="Account Number"
+                  maxlength="10"
+                  name="accountNumberInputed"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <img
+                  id="loadingGifBeneficiary"
+                  src="imgs/Loading_icon.gif"
+                  alt="Loading..."
+                  style="display: none; width: 20px"
+                />
+              </div>
+              <label>Beneficiary Name</label>
+              <input type="text" placeholder="Full Name" required />
+              <button type="submit">Save Beneficiary</button>
+
+              <div id="noBeneficiaryNotice" class="no-beneficiary">
+                <p>No beneficiary saved yet.</p>
+                <button id="addBeneficiaryBtn">+</button>
+              </div>
+
+              <div id="beneficiaryDisplay" class="beneficiary-display">
+                <!-- Filled dynamically -->
+              </div>
+            </form>
+          </div>
+          <!-- PIN Overlay -->
+          <div id="pinOverlay" style="display: none" class="overlay">
+            <div class="overlay-box">
+              <h2>Enter Transaction PIN</h2>
+              <div class="pin-inputs">
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin1"
+                />
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin2"
+                />
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin3"
+                />
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin4"
+                />
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin5"
+                />
+                <input
+                  type="password"
+                  maxlength="1"
+                  class="pin-input"
+                  name="pin6"
+                />
+              </div>
+              <!-- <button id="submitPin">Submit</button> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="transactions" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Transaction History</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <div id="transaction-history">
+            <ul
+              id="transaction-list"
+              class="transaction-list"
+              style="color: black"
+            ></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="airtime" class="section airtime-section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Airtime Recharge</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+
+        <div class="content-body">
+          <!-- Carrier Selection -->
+          <div class="form-group">
+            <label for="carrier">Select Carrier</label>
+            <select id="carrier">
+              <option>Select a carrier</option>
+              <option>AT&T</option>
+              <option>Verizon</option>
+              <option>T-Mobile</option>
+              <option>Sprint</option>
+              <option>US Cellular</option>
+            </select>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="e.g., 555-123-4567" />
+          </div>
+
+          <!-- Amount Options -->
+          <div class="form-group">
+            <label>Amount</label>
+            <div class="amount-options">
+              <button>$5</button>
+              <button class="selected">$10</button>
+              <button>$20</button>
+              <button>$50</button>
+              <button>$100</button>
+              <button>Custom</button>
+            </div>
+          </div>
+
+          <!-- Recharge For -->
+          <div class="form-group">
+            <label>Recharge For</label>
+            <div class="radio-group">
+              <label><input type="radio" name="recharge-for" /> Self</label>
+              <label><input type="radio" name="recharge-for" /> Others</label>
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="form-group">
+            <label for="account">Debit From</label>
+            <select id="account">
+              <option>Current account</option>
+              <option>Savings Account</option>
+            </select>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="form-group">
+            <button class="cta-btn">Proceed to Recharge</button>
+          </div>
+
+          <!-- Recent Top-Ups -->
+          <div class="recent-topups">
+            <h3>Recent Top-Ups</h3>
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="bill" class="section bill-section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Bill Payment</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+
+        <div class="content-body">
+          <!-- Bill Type -->
+          <div class="form-group">
+            <label for="bill-type">Select Bill Type</label>
+            <select id="bill-type">
+              <option>Choose a bill type</option>
+              <option>Electricity</option>
+              <option>Water</option>
+              <option>Internet</option>
+              <option>Streaming (Netflix, Hulu)</option>
+              <option>Property Tax</option>
+            </select>
+          </div>
+
+          <!-- Biller Name -->
+          <div class="form-group">
+            <label for="biller-name">Biller Name</label>
+            <input
+              type="text"
+              id="biller-name"
+              placeholder="e.g., Con Edison, Comcast"
+            />
+          </div>
+
+          <!-- Account / Reference Number -->
+          <div class="form-group">
+            <label for="account-number">Account / Reference Number</label>
+            <input
+              type="text"
+              id="account-number"
+              placeholder="e.g., 1234567890"
+            />
+          </div>
+
+          <!-- Payment Amount -->
+          <div class="form-group">
+            <label for="bill-amount">Amount</label>
+            <input type="text" id="bill-amount" placeholder="$0.00" />
+          </div>
+
+          <!-- Payment Method -->
+          <div class="form-group">
+            <label for="pay-from">Debit From</label>
+            <select id="pay-from">
+              <option>Checking Account</option>
+              <option>Savings Account</option>
+            </select>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="form-group">
+            <button class="cta-btn">Proceed to Pay</button>
+          </div>
+
+          <!-- Recent Bill Payments -->
+          <div class="recent-topups">
+            <h3>Recent Bill Payments</h3>
+            <ul></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="cards" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Cards</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <p>Manage your debit and credit cards here. (Coming soon...)</p>
+        </div>
+      </section>
+
+      <section id="scheduled-payment" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Scheduled Payment</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <p>Set and manage your scheduled payments. (Coming soon...)</p>
+        </div>
+      </section>
+
+      <section id="customize-links" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Customize EaZyLinks</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body">
+          <p>Rearrange or personalize your eaZyLinks here. (Coming soon...)</p>
+        </div>
+      </section>
+
+      <section id="travel" class="section travel-section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Travels & Leisure</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+
+        <div class="content-body">
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <select id="destination">
+              <option>Select a destination</option>
+              <option>New York</option>
+              <option>Los Angeles</option>
+              <option>Miami</option>
+              <option>Las Vegas</option>
+              <option>Chicago</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="travel-date">Travel Date</label>
+            <input type="date" id="travel-date" />
+          </div>
+
+          <div class="form-group">
+            <label>Class</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="travel-class" value="Economy" />
+                Economy</label
+              >
+              <label
+                ><input type="radio" name="travel-class" value="Business" />
+                Business</label
+              >
+              <label
+                ><input type="radio" name="travel-class" value="First Class" />
+                First Class</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="travel-pay-from">Pay From</label>
+            <select id="travel-pay-from">
+              <option>Select account</option>
+              <option>Savings Account</option>
+              <option>Current Account</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button class="cta-btn">Proceed to Book</button>
+          </div>
+
+          <div class="recent-topups">
+            <h3>Recent Bookings</h3>
+            <ul></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="messages" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Messages</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body no-messages">
+          <div class="empty-box">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/5948/5948520.png"
+              alt="No messages"
+              width="50px"
+            />
+            <p>No messages from us yet.</p>
+            <span>Check back later for updates or announcements.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="settings" class="section">
+        <div class="content-header">
+          <nav class="section-nav">
+            <span class="nav-text">Settings</span>
+          </nav>
+          <img src="kroslink-logo1.png" alt="Logo" class="header-logo" />
+        </div>
+        <div class="content-body" id="settings-content">
+          <h3>User Information</h3>
+          <ul class="settings-list">
+            <li>
+              <strong>Full Name:</strong>
+              <span id="setting-full-name">Loading...</span>
+            </li>
+            <li>
+              <strong>Username:</strong>
+              <span id="setting-username">Loading...</span>
+            </li>
+            <li>
+              <strong>Account Number:</strong>
+              <span id="setting-account">Loading...</span>
+            </li>
+            <li>
+              <strong>Phone:</strong> <span id="setting-phone">Loading...</span>
+            </li>
+            <li>
+              <strong>Account Balance:</strong>
+              <span id="setting-balance">Loading...</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div class="bottom-nav sidebar-menu">
+      <li class="nav-item active" onclick="activateMenu(this, 'overview')">
+        <i class="fa fa-list-ul"></i>
+        <span>Overview</span>
+      </li>
+      <li class="nav-item" onclick="activateMenu(this, 'airtime')">
+        <i class="fa fa-phone"></i>
+        <span>Recharge</span>
+      </li>
+      <li class="nav-item" onclick="activateMenu(this, 'transfer')">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transfer</span>
+      </li>
+      <li class="nav-item" onclick="activateMenu(this, 'cards')">
+        <i class="fas fa-credit-card"></i>
+        <span style="margin-right: 0.4rem">Bill</span>
+      </li>
+    </div>
+    <script>
+      const transactionHistory = document.getElementById("transaction-history");
+      const transactionList = document.getElementById("transaction-list");
+      const refreshBtn = document.getElementById("refreshBtn");
+
+      // Optional: Generate a transaction ID (not currently used)
+      function generateTransactionId() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let transactionId = "Tf3xN5";
+        for (let i = 0; i < 20; i++) {
+          transactionId += chars.charAt(
+            Math.floor(Math.random() * chars.length)
+          );
+        }
+        return transactionId;
+      }
+
+      // Fetch and render transaction history
+      async function updateTransactionHistory() {
+        const accountNumber = localStorage.getItem("currentAccount");
+        if (!accountNumber) {
+          console.error("No current account found in localStorage.");
+          transactionList.innerHTML = "<li>No account selected.</li>";
+          return;
+        }
+
+        try {
+          transactionList.innerHTML = "<li>Loading transactions...</li>";
+
+          const response = await fetch(
+            `https://zenithbank-backend.onrender.com/api/users/transactions/${accountNumber}`
+          );
+          const transactions = await response.json();
+
+          transactionList.innerHTML = ""; // Clear list
+
+          if (!Array.isArray(transactions) || transactions.length === 0) {
+            transactionList.innerHTML = "<li>No transactions found.</li>";
+            return;
+          }
+
+          // Sort by latest date
+          transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          transactions.forEach((transaction) => {
+            const transactionItem = document.createElement("li");
+            transactionItem.classList.add("transaction-item");
+
+            const statusClass = transaction.status.toLowerCase();
+            const statusBg =
+              statusClass === "completed"
+                ? "green"
+                : statusClass === "failed"
+                ? "red"
+                : "yellow";
+
+            transactionItem.innerHTML = `
+              <div class="transaction-top">
+                <span>Transfer to ${transaction.recipientAccount}</span>
+                <span class="status ${statusClass}" style="background-color: ${statusBg};">
+                  ${transaction.status}
+                </span>
+              </div>
+              <div class="transaction-details">
+                <div>Amount: $${parseFloat(transaction.amount).toFixed(2)}</div>
+
+
+                <div>Date: ${
+                  transaction.date
+                    ? new Date(transaction.date).toLocaleString()
+                    : "Unknown"
+                }</div>
+                <div>Txn ID: ${transaction.transactionId}</div>
+                <p>Contact customer care</p>   
+              </div>
+            `;
+
+            transactionList.appendChild(transactionItem);
+          });
+        } catch (error) {
+          console.error("Error fetching transaction history:", error);
+          transactionList.innerHTML =
+            "<li>Failed to load transaction history.</li>";
+        }
+      }
+
+      // Load on page load
+      window.addEventListener("DOMContentLoaded", updateTransactionHistory);
+
+      // Optional: Refresh transactions when clicking a button
+      if (refreshBtn) {
+        refreshBtn.addEventListener("click", function () {
+          updateTransactionHistory();
+        });
+      }
+    </script>
+
+    <script src="dashboard.js"></script>
+    <script src="transfer.js"></script>
+    <script src="bill.js"></script>
+    <script src="airtime.js"></script>
+    <script src="travel.js"></script>
+    <script src="settings.js"></script>
+    <script src="easylikns.js"></script>
+  </body>
+</html>

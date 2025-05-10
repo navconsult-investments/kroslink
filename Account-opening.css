@@ -1,0 +1,257 @@
+.full-container-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* Image Section */
+.full-width-image-section {
+  width: 50vw;
+  height: 100vh;
+  background: url("kroslink-logo1.png") no-repeat center center/cover;
+  object-fit: cover;
+}
+
+/* Form Section */
+.content-details-form-section {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  position: relative;
+}
+
+.top-right-logo {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+.highlighted-red-text {
+  color: #003087;
+}
+
+/* Category Selection */
+.category-selection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  margin: 3rem 0;
+  background: url("https://onlineac.zenithbank.com/img/rightcross.svg")
+    no-repeat center center/cover;
+}
+
+.individual-category-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid gainsboro;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.individual-category-box:hover {
+  /* background-color: #ffebef; */
+  color: white;
+  background: linear-gradient(90deg, #003087, #00aaff);
+}
+
+.selected-category-highlight {
+  /* background: #ffebef; */
+  background: #e6f4ff;
+  color: #003087;
+
+  border-color: #003087;
+}
+
+.icon-area-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* background: #ffebef; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  /* color: red; */
+  color: #003087;
+
+  transition: 0.3s;
+}
+
+.selected-category-highlight .icon-area-container {
+  /* background: red; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  color: white;
+}
+
+.category-text-content {
+  flex: 1;
+  margin-left: 10px;
+  text-align: left;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.custom-radio-checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.selected-category-highlight .custom-radio-checkmark {
+  /* background: red; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  border-color: #003087;
+  color: white;
+}
+
+.selected-category-highlight .custom-radio-checkmark::before {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+}
+
+/* Button Styling */
+button {
+  padding: 16px 20px;
+  background: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  width: 80%;
+}
+
+button:enabled {
+  /* background: red; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
+  cursor: pointer;
+}
+
+.update-existing-account-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.footer-copyright-text {
+  font-size: 12px;
+  color: gray;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .full-container-layout {
+    flex-direction: column;
+  }
+
+  .full-width-image-section {
+    width: 100%;
+    height: 30rem;
+  }
+
+  .content-details-form-section {
+    width: 100%;
+  }
+
+  .top-right-logo {
+    display: none;
+  }
+}
+
+#loadingOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(imgs/blue-bg-img.jpg) center center no-repeat;
+  background-size: cover;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.loading-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  animation: pulseZoom 2s ease-in-out infinite;
+}
+
+.loader-circle {
+  width: 120px;
+  height: 120px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #003087;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseZoom {
+  0%,
+  100% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

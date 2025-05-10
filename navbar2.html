@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Custom Navbar</title>
+    <link rel="stylesheet" href="navbar2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="kroslink-logo1.png" alt="KrosLink Logo" />
+        <span class="bank-name">KrosLinkFinanceOnlineBanking</span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle">
+            About Us <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">About UOB</a></li>
+            <li><a href="#">Community Stewardship</a></li>
+            <li><a href="#">Our Network</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#">Newsroom</a></li>
+        <li class="nav-item"><a href="#">Investor Relations</a></li>
+        <li class="nav-item"><a href="#">Sustainability</a></li>
+        <li class="nav-item"><a href="#">Research</a></li>
+        <li class="nav-item"><a href="#">Careers</a></li>
+      </ul>
+
+      <!-- <div class="nav-actions" style="margin-top: 2rem">
+        <a href="#" class="login-btn">Login</a>
+      </div> -->
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const navbar = document.querySelector(".navbar");
+      const dropdownToggle = document.querySelector(".dropdown-toggle");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      const arrowIcon = document.querySelector(".arrow-icon");
+
+      toggle.addEventListener("click", () => {
+        navbar.classList.toggle("open");
+      });
+
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // <--- Add this
+        if (window.innerWidth <= 768) {
+          dropdownMenu.classList.toggle("open-dropdown");
+          arrowIcon.classList.toggle("rotate");
+        }
+      });
+    </script>
+  </body>
+</html>

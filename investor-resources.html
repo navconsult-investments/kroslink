@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Investor Resources - KrosLinkFinanceOnlineBanking</title>
+    <link rel="stylesheet" href="investor-resources.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="navbar2.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="kroslink-logo1.png" alt="KrosLink Logo" />
+        <span class="bank-name">KrosLinkFinanceOnlineBanking</span>
+      </a>
+
+      <ul class="nav-links">
+        <!-- Company Info Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="about-us.html">
+            About Us </i>
+          </a>
+          
+        </li>
+
+        <!-- Support and Security -->
+        <li class="nav-item"><a href="help-support.html">Help & Support</a></li>
+        <li class="nav-item"><a href="investor-relations.html">Investor Relations</a></li>
+
+        <!-- Updates & Access -->
+        <li class="nav-item"><a href="loans-updates.html">Loans & Updates</a></li>
+        <li class="nav-item"><a href="login.html">Login</a></li>
+      </ul>
+
+      
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <header class="header">
+      <h1>Investor Resources</h1>
+      <nav class="internal-nav">
+        <a href="#presentation"
+          ><i class="fa-solid fa-file-powerpoint"></i> 2025 Investor
+          Presentation</a
+        >
+        <a href="#whitepaper"
+          ><i class="fa-solid fa-book-open"></i> Banking Industry Outlook</a
+        >
+        <a href="#esg"
+          ><i class="fa-solid fa-leaf"></i> ESG Investment Report</a
+        >
+      </nav>
+    </header>
+
+    <main class="content">
+      <section id="presentation" class="resource-section">
+        <h2>2025 Investor Presentation</h2>
+        <p>
+          The 2025 Investor Presentation provides a comprehensive overview of
+          KrosLinkFinanceOnlineBanking’s performance, strategic initiatives, and
+          market outlook. This visual document showcases our progress on growth
+          metrics, customer acquisition, innovation strategy, and digital
+          transformation goals.
+        </p>
+        <a
+          href="docs/KLFOB-2025-Investor-Presentation.pdf"
+          class="download-link"
+          download
+        >
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+      </section>
+
+      <section id="whitepaper" class="resource-section">
+        <h2>Banking Industry Outlook (Whitepaper)</h2>
+        <p>
+          This whitepaper explores global banking trends shaping the financial
+          landscape in 2025. Topics include digital banking evolution,
+          regulatory changes, fintech competition, and the future of
+          customer-centric banking. Our research highlights how
+          KrosLinkFinanceOnlineBanking is positioning itself ahead of the curve.
+        </p>
+        <a
+          href="docs/KLFOB-2025-Banking-Outlook.pdf"
+          class="download-link"
+          download
+        >
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+      </section>
+
+      <section id="esg" class="resource-section">
+        <h2>ESG Investment Report</h2>
+        <p>
+          Our Environmental, Social, and Governance (ESG) Investment Report
+          outlines how we align our banking operations and corporate practices
+          with sustainable development goals. From ethical investments to
+          climate-conscious lending, this report provides transparency into our
+          ESG commitments.
+        </p>
+        <a href="docs/KLFOB-ESG-Report-2025.pdf" class="download-link" download>
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+      </section>
+    </main>
+
+    <footer class="footer-section">
+      <div class="footer-container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4>ABOUT US</h4>
+            <ul>
+              <li><a href="about-us.html">About KrosLink</a></li>
+              <li><a href="investor-relations.html">Investor Relations</a></li>
+              <li><a href="faqs.html">Faqs</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>SUPPORT</h4>
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="mailto:info@kroslinkfinancial.com">info@kroslinkfinancial.com</li>
+              <li><a href="help-support.html">Customer Service</a></li> 
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>TRANSPARENCY</h4>
+            <ul>
+              <li><a  href="KrosLinkFinance_Legal_Notices.pdf" target="_blank">Legal Notices</a></li>
+              <li><a href="security-center.html">Privacy & Security</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="footer-bottom">
+          <a href="index.html" class="logo">
+            <img src="kroslink-logo1.png" alt="KrosLink Logo" />
+            <span style="color: lightskyblue"
+              >KrosLinkFinanceOnlineBanking</span
+            >
+          </a>
+          <p>
+            Copyright © 2025 KrosLinkFinanceOnlineBanking. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const navbar = document.querySelector(".navbar");
+      const dropdownToggle = document.querySelector(".dropdown-toggle");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      const arrowIcon = document.querySelector(".arrow-icon");
+
+      toggle.addEventListener("click", () => {
+        navbar.classList.toggle("open");
+      });
+
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // <--- Add this
+        if (window.innerWidth <= 768) {
+          dropdownMenu.classList.toggle("open-dropdown");
+          arrowIcon.classList.toggle("rotate");
+        }
+      });
+    </script>
+  </body>
+</html>

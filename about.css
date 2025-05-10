@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  background: #e6f4ff;
+  color: #222;
+}
+
+.about-page {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #003087;
+  color: #fff;
+}
+
+.hero button {
+  background-color: #00aaff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.feature {
+  background: #e2e8f0;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1 1 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.section-with-image {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.section-with-image .text {
+  flex: 1;
+}
+
+.section-with-image img {
+  flex: 1;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.timeline {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.timeline-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.timeline .card {
+  background: #edf2f7;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.board-intro {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.member {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.member img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.member h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.governance {
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-with-image {
+    flex-direction: column;
+    text-align: center;
+  }
+}
