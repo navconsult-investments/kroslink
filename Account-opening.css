@@ -15,7 +15,8 @@
 .full-width-image-section {
   width: 50vw;
   height: 100vh;
-  background: url("kroslink-logo1.png") no-repeat center center/cover;
+  background: url("kroslink-logo1-removebg-preview.png") no-repeat center
+    center/cover;
   object-fit: cover;
 }
 
@@ -27,7 +28,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: white;
+  /* background: white; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
   padding: 20px;
   position: relative;
 }
@@ -55,6 +58,7 @@ h3 {
   gap: 15px;
   width: 80%;
   margin: 3rem 0;
+  background-color: linear-gradient(90deg, #003087, #00aaff);
   background: url("https://onlineac.zenithbank.com/img/rightcross.svg")
     no-repeat center center/cover;
 }
@@ -64,6 +68,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   background: white;
+
   padding: 15px;
   border-radius: 8px;
   border: 1px solid gainsboro;
