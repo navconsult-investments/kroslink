@@ -7,7 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background: linear-gradient(90deg, #003087, #00aaff);
+
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -15,8 +17,7 @@
 .full-width-image-section {
   width: 50vw;
   height: 100vh;
-  background: url("kroslink-logo1-removebg-preview.png") no-repeat center
-    center/cover;
+  background: url("kroslink-logo1.png") no-repeat center center/cover;
   object-fit: cover;
 }
 
