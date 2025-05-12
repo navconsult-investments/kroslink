@@ -27,7 +27,8 @@ a {
 
 .overlay {
   /* background: red; */
-  background: linear-gradient(90deg, #003087, #00aaff);
+  /* background: linear-gradient(90deg, #003087, #00aaff); */
+  background: #003087;
 
   color: white;
   padding: 20px;
