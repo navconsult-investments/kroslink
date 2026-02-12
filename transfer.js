@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   accountNumber: accountNumber,
                   transactionPin: pin,
                 }),
-              }
+              },
             )
               .then((res) => res.json())
               .then((data) => {
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           "Content-Type": "application/json",
                         },
                         body: JSON.stringify({ amount: amount }), // Use negative value to deduct
-                      }
+                      },
                     )
                       .then((res) => res.json())
                       .then((data) => {
@@ -153,20 +153,20 @@ document.addEventListener("DOMContentLoaded", () => {
                                 "Content-Type": "application/json",
                               },
                               body: JSON.stringify(transactionData),
-                            }
+                            },
                           )
                             .then((res) => res.json())
                             .then((data) => {
                               if (data.transaction) {
                                 console.log(
                                   "Transaction saved:",
-                                  data.transaction
+                                  data.transaction,
                                 );
                                 updateTransactionHistory(); // Still call this if your UI relies on it
                               } else {
                                 console.error(
                                   "Failed to save transaction:",
-                                  data.error
+                                  data.error,
                                 );
                               }
                             })
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!accountNumber) return;
 
   fetch(
-    `https://zenithbank-backend.onrender.com/api/users/account/${accountNumber}`
+    `https://zenithbank-backend.onrender.com/api/users/account/${accountNumber}`,
   )
     .then((res) => res.json())
     .then((data) => {
@@ -259,13 +259,13 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const accountNumberInput = form.querySelector(
-              "input[name='accountNumberInputed']"
+              "input[name='accountNumberInputed']",
             );
-            if (accountNumberInput && accountNumberInput.value.length !== 10) {
+            if (accountNumberInput && accountNumberInput.value.length !== 12) {
               Swal.fire({
                 icon: "error",
                 title: "Invalid Account Number",
-                text: "Please enter a valid 10-digit account number.",
+                text: "Please enter a valid 12-digit account number.",
               });
               return;
             }
@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const amount = parseFloat(
-              values.amount || values["amount-input"] || 0
+              values.amount || values["amount-input"] || 0,
             );
 
             if (isNaN(amount) || amount <= 0) {
