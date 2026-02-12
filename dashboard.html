@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -352,7 +352,7 @@
                   type="text"
                   id="accountNumber"
                   placeholder="Account Number"
-                  maxlength="10"
+                  maxlength="14"
                   name="accountNumberInputed"
                   required
                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
@@ -947,7 +947,7 @@
         let transactionId = "Tf3xN5";
         for (let i = 0; i < 20; i++) {
           transactionId += chars.charAt(
-            Math.floor(Math.random() * chars.length)
+            Math.floor(Math.random() * chars.length),
           );
         }
         return transactionId;
@@ -966,7 +966,7 @@
           transactionList.innerHTML = "<li>Loading transactions...</li>";
 
           const response = await fetch(
-            `https://zenithbank-backend.onrender.com/api/users/transactions/${accountNumber}`
+            `https://zenithbank-backend.onrender.com/api/users/transactions/${accountNumber}`,
           );
           const transactions = await response.json();
 
@@ -989,8 +989,8 @@
               statusClass === "completed"
                 ? "green"
                 : statusClass === "failed"
-                ? "red"
-                : "yellow";
+                  ? "red"
+                  : "yellow";
 
             transactionItem.innerHTML = `
               <div class="transaction-top">
