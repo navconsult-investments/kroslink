@@ -261,14 +261,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const accountNumberInput = form.querySelector(
               "input[name='accountNumberInputed']",
             );
-            if (accountNumberInput && accountNumberInput.value.length !== 12) {
-              Swal.fire({
-                icon: "error",
-                title: "Invalid Account Number",
-                text: "Please enter a valid 12-digit account number.",
-              });
-              return;
-            }
+            // if (accountNumberInput && accountNumberInput.value.length !== 12) {
+            //   Swal.fire({
+            //     icon: "error",
+            //     title: "Invalid Account Number",
+            //     text: "Please enter a valid 12-digit account number.",
+            //   });
+            //   return;
+            // }
 
             const formData = new FormData(form);
             const values = {};
